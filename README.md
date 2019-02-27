@@ -1,2 +1,5 @@
 A. Hartley
-Amanda Gonzalez
+
+A. Gonzalez
+
+D. Chopra
