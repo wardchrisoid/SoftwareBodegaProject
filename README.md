@@ -8,4 +8,4 @@ X. Lita
 
 J. Reeve
 
-C. Ward.
+C. Ward
