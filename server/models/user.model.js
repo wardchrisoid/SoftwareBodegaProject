@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
+  userId: {
+    type: ObjectId,
+    unique: true,
+  },
   fullname: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
@@ -14,17 +18,52 @@ const UserSchema = new mongoose.Schema({
   },
   hashedPassword: {
     type: String,
-    required: true
+    required: true,
   },
+  phoneNumber: {
+    type: String,
+    match: [/([0-9]+-)*[0-9]{3}-[0-9]{3}-[0-9]{4}/, 'Please enter a phone number'],
+  },
+  inventory: [{
+    item: {
+      itemID: ObjectId,
+      name: String,
+      desc: String,
+      price: Number,
+      quantity: Number,
+    }
+  }],
+  cart: [{
+    item: {
+      itemID: ObjectId,
+      name: String,
+      desc: String,
+      price: Number,
+      quantity: Number,
+    }
+  }],
+  paymentDetails: {
+    type: String,
+    info: String,
+  },
+  history: [{
+    item: {
+      itemID: ObjectId,
+      name: String,
+      desc: String,
+      price: Number,
+      quantity: Number,
+    }
+  }],
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   roles: [{
     type: String,
   }]
 }, {
-  versionKey: false
+  versionKey: false,
 });
 
 
