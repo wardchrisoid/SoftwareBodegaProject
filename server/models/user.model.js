@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   userId: {
-    type: ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     unique: true,
   },
   fullname: {
@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
   },
   inventory: [{
     item: {
-      itemID: ObjectId,
+      itemID: mongoose.Schema.Types.ObjectId,
       name: String,
       desc: String,
       price: Number,
@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema({
   }],
   cart: [{
     item: {
-      itemID: ObjectId,
+      itemID: mongoose.Schema.Types.ObjectId,
       name: String,
       desc: String,
       price: Number,
@@ -48,7 +48,7 @@ const UserSchema = new mongoose.Schema({
   },
   history: [{
     item: {
-      itemID: ObjectId,
+      itemID: mongoose.Schema.Types.ObjectId,
       name: String,
       desc: String,
       price: Number,
