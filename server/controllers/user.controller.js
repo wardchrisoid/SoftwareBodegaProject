@@ -11,9 +11,17 @@ const userSchema = Joi.object({
   repeatPassword: Joi.string().required().valid(Joi.ref('password'))
 })
 
+const updateUserSchema = Joi.object({
+  fullname: Joi.string(),
+  email: Joi.string().email(),
+  mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/),
+  roles: Joi.string()
+})
 
 module.exports = {
-  insert
+  insert,
+  retreive,
+  updateUser
 }
 
 async function insert(user) {
@@ -22,3 +30,16 @@ async function insert(user) {
   delete user.password;
   return await new User(user).save();
 }
+
+
+async function retreive(id) {
+  return await User.find({ _id: id}).exec();
+}
+
+async function updateUser(id, user) {
+  user = await Joi.validate(user, updateUserSchema, { abortEarly: false });
+  return await User.findOneAndUpdate({ _id: id}, {$set:{email: user.email, 
+                                                        phoneNumber : user.phoneNumber,
+                                                        roles : user.roles,}}).exec();
+} 
+
