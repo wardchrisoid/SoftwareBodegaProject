@@ -1,6 +1,14 @@
-<header>
+<header >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei" rel="stylesheet">
+  
   <mat-toolbar color="primary">
-    <a [routerLink]="['/']" class="logo"></a>
+    <a [routerLink]="['/']" class="logo"></a> 
+    <a [routerLink]="['/']" class="toolbar-buttons"> Home </a>
+    <a class="toolbar-buttons"> Deals </a> 
+    <a [routerLink]="['/about']" class="toolbar-buttons"> About </a> 
+
     <span class="example-spacer"></span>
     <a class="links side" [routerLink]="['/auth/login']" *ngIf="!user">Login</a>
     <div>
@@ -13,4 +21,4 @@
       </mat-menu>
     </div>
   </mat-toolbar>
-</header>
+</header>                                      
