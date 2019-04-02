@@ -16,7 +16,8 @@ router.route('/:vendorId')
 
 router.route('/:vendorId/:itemId')
   .post(updateItem)
-  .delete(deleteItem);
+  .delete(deleteItem)
+  .get(retrieveItem)
 
 router.route('/item/:itemId')
   .get(retrieveItem);
@@ -43,7 +44,7 @@ async function retrieveItem(req, res){
 }
 
 async function updateItem(req, res){
-  let item = await apiCtrl.updateItem(req.params.vendorId, req.params.itemId);
+  let item = await apiCtrl.updateItem(req.params.vendorId, req.params.itemId, req.body);
   res.json(item);
 }
 async function deleteItem(req, res){

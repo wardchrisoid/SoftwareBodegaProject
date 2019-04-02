@@ -40,8 +40,11 @@ async function retrieveItem(id){
   return result;
 }
 
-async function updateItem(vendorId, itemId){
-  return [];
+async function updateItem(vendorId, itemId, item){
+  item = await Joi.validate(item, itemSchema, { abortEarly: false});
+  item._id = itemId
+  let result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId},{$set: {"inventory.$": item}}).exec();
+  return result;
 }
 
 async function deleteItem(vendorId, itemId){
