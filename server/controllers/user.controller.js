@@ -27,6 +27,7 @@ module.exports = {
 async function insert(user) {
   user = await Joi.validate(user, userSchema, { abortEarly: false });
   user.hashedPassword = bcrypt.hashSync(user.password, 10);
+  user.userId = mongoose.Types.ObjectId();
   delete user.password;
   return await new User(user).save();
 }

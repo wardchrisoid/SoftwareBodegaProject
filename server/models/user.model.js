@@ -11,6 +11,10 @@ var ItemSchema = new mongoose.Schema(
   });
 
 const UserSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    unique: true,
+  },
   fullname: {
     type: String,
     required: true,
