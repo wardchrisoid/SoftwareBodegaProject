@@ -48,5 +48,6 @@ async function updateItem(vendorId, itemId, item){
 }
 
 async function deleteItem(vendorId, itemId){
-  return [];
+  let result = User.findByIdAndUpdate(vendorId, {'$pull': {'inventory':{ '_id': itemId}}});
+  return result;
 }
