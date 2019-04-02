@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
   get fullname(): any { return this.profileForm.get('fullname'); }
   get email(): any { return this.profileForm.get('email'); }
 
-  //
+  saveChanges(): void {
+    console.log("save changes button pressed");
+  }
 
 }
