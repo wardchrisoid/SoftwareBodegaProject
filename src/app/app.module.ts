@@ -15,12 +15,18 @@ import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AboutComponent } from './about/about.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    ProfileComponent,
+    AboutComponent,
+    FridgeComponent,
   ],
   imports: [
     BrowserModule,

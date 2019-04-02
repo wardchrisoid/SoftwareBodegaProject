@@ -1,0 +1,56 @@
+.home_pic{
+	width: 80%;
+	margin-left: 10%;
+}
+
+.shadow {
+    box-shadow: -20px 0px 100px -60px #000000, 
+    			 20px 0px 100px -60px #000000;
+}
+
+.page_margin{
+	
+	width: 80%;
+    margin-left: 10%;
+    height: 600px;
+}
+
+.carousel-item{
+	height: 600px;
+}
+
+.example_e {
+	border: none;
+    background: #704412cf;
+    font-weight: bolder;
+    padding: 20px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    top: -200px;
+    z-index: +1;
+    font-family: 'ZCOOL XiaoWei', serif;
+    color: #ebcaa2;
+    font-size:larger;
+}
+
+.example_e:hover {
+	color: #000000 !important;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.3s ease 0s;
+}
+
+.welcome_msg{
+	position: relative;
+    top: -200px;
+    z-index: +1;
+    font-family: 'ZCOOL XiaoWei', serif;
+    color: #ebcaa2;
+    font-size:larger;
+}

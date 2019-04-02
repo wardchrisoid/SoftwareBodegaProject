@@ -1,9 +1,23 @@
 const mongoose = require('mongoose');
 
+var ItemSchema = new mongoose.Schema(
+  {
+    name: String,
+    desc: String,
+    price: Number,
+    quantity: Number,
+    vendorId: mongoose.Types.ObjectId,
+    cartId: mongoose.Types.ObjectId
+  });
+
 const UserSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    unique: true,
+  },
   fullname: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
@@ -14,17 +28,28 @@ const UserSchema = new mongoose.Schema({
   },
   hashedPassword: {
     type: String,
-    required: true
+    required: true,
   },
+  phoneNumber: {
+    type: String,
+    match: [/([0-9]+-)*[0-9]{3}-[0-9]{3}-[0-9]{4}/, 'Please enter a phone number'],
+  },
+  inventory: [ItemSchema],
+  cart: [ItemSchema],
+  paymentDetails: {
+    type: String,
+    info: String,
+  },
+  history: [ItemSchema],
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   roles: [{
     type: String,
   }]
 }, {
-  versionKey: false
+  versionKey: false,
 });
 
 
