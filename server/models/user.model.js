@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
+var ItemSchema = new mongoose.Schema(
+  {
+    name: String,
+    desc: String,
+    price: Number,
+    quantity: Number,
+  });
+
 const UserSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    unique: true,
-  },
   fullname: {
     type: String,
     required: true,
@@ -24,37 +28,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     match: [/([0-9]+-)*[0-9]{3}-[0-9]{3}-[0-9]{4}/, 'Please enter a phone number'],
   },
-  inventory: [{
-    item: {
-      itemId: mongoose.Schema.Types.ObjectId,
-      name: String,
-      desc: String,
-      price: Number,
-      quantity: Number,
-    }
-  }],
-  cart: [{
-    item: {
-      itemId: mongoose.Schema.Types.ObjectId,
-      name: String,
-      desc: String,
-      price: Number,
-      quantity: Number,
-    }
-  }],
+  inventory: [ItemSchema],
+  cart: [ItemSchema],
   paymentDetails: {
     type: String,
     info: String,
   },
-  history: [{
-    item: {
-      itemId: mongoose.Schema.Types.ObjectId,
-      name: String,
-      desc: String,
-      price: Number,
-      quantity: Number,
-    }
-  }],
+  history: [ItemSchema],
   createdAt: {
     type: Date,
     default: Date.now,

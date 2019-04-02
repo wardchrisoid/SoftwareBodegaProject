@@ -16,7 +16,8 @@ router.route('/:vendorId')
 
 router.route('/:vendorId/:itemId')
   .post(updateItem)
-  .delete(deleteItem);
+  .delete(deleteItem)
+  .get(retrieveItem)
 
 router.route('/item/:itemId')
   .get(retrieveItem);
@@ -32,7 +33,7 @@ async function retrieveInventory(req, res){
 }
 
 async function createItem(req, res){
-  let item = await apiCtrl.createItem(req.body);
+  let item = await apiCtrl.createItem(req.params.vendorId, req.body);
   res.json(item);
 }
 
@@ -43,7 +44,7 @@ async function retrieveItem(req, res){
 }
 
 async function updateItem(req, res){
-  let item = await apiCtrl.updateItem(req.params.vendorId, req.params.itemId);
+  let item = await apiCtrl.updateItem(req.params.vendorId, req.params.itemId, req.body);
   res.json(item);
 }
 async function deleteItem(req, res){
