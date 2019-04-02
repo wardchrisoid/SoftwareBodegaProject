@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("----- header.component.ts -----");
+    console.log("this.user:");
+    console.log(this.user);
+    console.log("-------------------------------");
   }
 
   logout(): void {
