@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const User = require('../models/user.model');
+const mongoose = require('mongoose');
 
 const userSchema = Joi.object({
   fullname: Joi.string().required(),
@@ -18,6 +19,7 @@ module.exports = {
 async function insert(user) {
   user = await Joi.validate(user, userSchema, { abortEarly: false });
   user.hashedPassword = bcrypt.hashSync(user.password, 10);
+  user.userId = mongoose.Types.ObjectId();
   delete user.password;
   return await new User(user).save();
 }
