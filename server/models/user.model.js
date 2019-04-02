@@ -6,6 +6,8 @@ var ItemSchema = new mongoose.Schema(
     desc: String,
     price: Number,
     quantity: Number,
+    vendorId: mongoose.Types.ObjectId,
+    cartId: mongoose.Types.ObjectId
   });
 
 const UserSchema = new mongoose.Schema({
