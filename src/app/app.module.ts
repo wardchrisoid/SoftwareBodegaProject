@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     ProfileComponent,
     AboutComponent,
+    FridgeComponent,
   ],
   imports: [
     BrowserModule,

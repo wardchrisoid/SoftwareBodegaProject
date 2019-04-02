@@ -4,6 +4,7 @@ import { AuthGuard } from '../auth/auth-guard.service';
 import { HomeComponent } from '../home/home.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { AboutComponent } from '../about/about.component';
+import { FridgeComponent } from '../fridge/fridge.component';
 
 const routes: Routes = [{
   path: '',
@@ -22,7 +23,11 @@ const routes: Routes = [{
 {
   path: 'about',
   component: AboutComponent
-}  
+},
+{
+  path: 'fridge',
+  component: FridgeComponent
+}    
 ];
 
 @NgModule({
