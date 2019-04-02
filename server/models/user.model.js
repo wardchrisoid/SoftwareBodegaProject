@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
   },
   inventory: [{
     item: {
-      itemID: mongoose.Schema.Types.ObjectId,
+      itemId: mongoose.Schema.Types.ObjectId,
       name: String,
       desc: String,
       price: Number,
@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema({
   }],
   cart: [{
     item: {
-      itemID: mongoose.Schema.Types.ObjectId,
+      itemId: mongoose.Schema.Types.ObjectId,
       name: String,
       desc: String,
       price: Number,
@@ -48,7 +48,7 @@ const UserSchema = new mongoose.Schema({
   },
   history: [{
     item: {
-      itemID: mongoose.Schema.Types.ObjectId,
+      itemId: mongoose.Schema.Types.ObjectId,
       name: String,
       desc: String,
       price: Number,
