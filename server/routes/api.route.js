@@ -32,7 +32,7 @@ async function retrieveInventory(req, res){
 }
 
 async function createItem(req, res){
-  let item = await apiCtrl.createItem(req.body);
+  let item = await apiCtrl.createItem(req.params.vendorId, req.body);
   res.json(item);
 }
 
