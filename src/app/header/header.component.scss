@@ -1,12 +1,26 @@
 header {
     width: 100%;
     .logo {
-      background-image: url('../../assets/logo.png');
-      width: 50px;
-      height: 50px;
+      background-image: url('../../assets/logo2.jpg');
+      width: 60px;
+      height: 60px;
       background-size: contain;
       background-repeat: no-repeat;
+      border-radius: 30px;
+      margin-top: 7px;
     }
+    .toolbar-buttons{
+      font-style: italic;
+      font-family: 'ZCOOL XiaoWei', serif;
+      text-indent: 15px;
+      color: #ebcaa2;
+    }
+
+    .toolbar-buttons:hover{
+      
+      color: white;
+    }
+
     .example-spacer {
       flex: 1 1 auto;
     }
@@ -24,12 +38,20 @@ header {
       }
     }
     .mat-toolbar {
-      background: black;
+      top: 20px;
+      margin-left: 10%;
+      background: #6c400fd1;
+      position: fixed;
+      width: 80%;
+      right: 10%;
+      min-width: 450px;
+      z-index: +1;
     }
     .mat-icon {
       vertical-align: middle;
       margin: 0 5px;
     }
+
     a {
       cursor: pointer;
     }
