@@ -1,6 +1,8 @@
 <div class="page_margin shadow text">
 	
-	<h1>This is the fridge</h1>	
-
+	<h1>This is the fridge</h1>
+	<div *ngIf="fridgeReady">
+		{{fridge[0]["name"]}}	
+	</div>
 
 </div>
