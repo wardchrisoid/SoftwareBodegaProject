@@ -3,10 +3,10 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const itemSchema = Joi.object({
-  name: Joi.string().required(),
-  desc: Joi.string().required(),
-  price: Joi.number().required(),
-  quantity: Joi.number().integer().required(),
+  name: Joi.string(),
+  desc: Joi.string(),
+  price: Joi.number(),
+  quantity: Joi.number().integer(),
   _id: Joi.string()
 })
 
@@ -19,7 +19,8 @@ module.exports = {
   updateItem,
   deleteItem,
   addToCart,
-  removeFromCart
+  removeFromCart,
+  purchaseCart
 }
 
 async function fridge() {
@@ -51,7 +52,17 @@ async function retrieveItem(id){
 async function updateItem(vendorId, itemId, item){
   item = await Joi.validate(item, itemSchema, { abortEarly: false});
   item._id = itemId
-  let result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId},{$set: {"inventory.$": item}}).exec();
+  let result = []
+  if(item.name)
+    result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: {"inventory.$.name": item.name}}).exec();
+  if(item.desc)
+    result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: {"inventory.$.desc": item.desc}}).exec();
+  if(item.price)
+    result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: {"inventory.$.price": item.price}}).exec();
+  if(item.quantity)
+    result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: { "inventory.$.quantity": item.quantity}}).exec();
+  if(item._id)
+    result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: {"inventory.$._id": item._id}}).exec();
   return result;
 }
 
@@ -104,4 +115,13 @@ async function removeFromCart(id, body){
     let result = User.findOneAndUpdate({_id: id, 'cart.cartId': tempItem["cartId"]}, {'$pull': {'cart':{ 'cartId': tempItem["cartId"]}}},{new: true});
     return result;
   }
+}
+
+async function purchaseCart(id){
+  let cart = await User.findOne({_id: id}, 'cart').exec();
+  await User.findOneAndUpdate({_id: id}, {'$pull': {'cart':{}}},{new: true}).exec();
+
+  cart = cart["cart"];
+  let result = await User.findOneAndUpdate({_id: id}, {$push: {history: cart}},{new: true}).exec();
+  return result;
 }
