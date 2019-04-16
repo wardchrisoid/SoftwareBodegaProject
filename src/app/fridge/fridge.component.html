@@ -1,7 +1,11 @@
 <div class="page_margin shadow text">
 	
-	<h1>This is the fridge</h1>	
+	<h1>This is the fridge</h1>
+	<div *ngIf="fridgeReady">
+		{{fridge[0]["name"]}}	
+	</div>
 
+<<<<<<< HEAD
 	<!-- <ul *ngIf="items$ | async as courses else noData">
           <li *ngFor="let item of items">
               {{item.name}}
@@ -10,3 +14,6 @@
      <ng-template #noData>No Data Available</ng-template> -->
 
 </div>
+=======
+</div>
+>>>>>>> 6c303ff3b7baaaca26dcec717b84acfb2d410313
