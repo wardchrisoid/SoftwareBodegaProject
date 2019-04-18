@@ -11,14 +11,15 @@ import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/f
 })
 export class FridgeComponent implements OnInit {
   private user: any = {};
-  private fridge: any = [];
-  private fridgeReady: boolean = false;
+  public fridge: any = [];
+  public fridgeReady: boolean = false;
   constructor(private http : HttpClient, private authService: AuthService) {}
   ngOnInit() {
     this.authService.me().subscribe( data => {this.user = data["user"];
     });
     this.http.get("/api/fridge").subscribe(data => {
-      data.forEach(element => {
+      let items = [].slice.call(data)
+      items.forEach(element => {
         let inventory = []
         element["inventory"].forEach(item => {
           item["vendorId"] = element["_id"]
