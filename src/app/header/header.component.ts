@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
     console.log("-------------------------------");
   }
 
+  profile(): void {
+    this.navigate('/profile');
+  }
+
   logout(): void {
     this.authService.signOut();
     this.navigate('/auth/login');
