@@ -1,19 +1,41 @@
-<div class="page_margin shadow text">
-	
-	<h1>This is the fridge</h1>
-	<div *ngIf="fridgeReady">
-		{{fridge[0]["name"]}}	
+
+
+
+
+<div class="page_margin shadow text">	
+	<div *ngIf="fridgeReady" ng-app="" class="container col-md-6" >		
+
+		<h1>Menu</h1>
+		<table class="table table-sm table-hover ">
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Add to Cart</th>
+					<th><th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr *ngFor = "let item of fridge">
+					<td>{{item["name"]}}</td>
+					<td>{{item["price"]}}</td>
+					<td>{{item["quantity"]}}</td>
+					<td><button type="button" class="btn btn-dark">Add</button></td>
+					
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- For testing purposes
+		<p>Input something: </p>
+		<p>Name: <input type="text" [(ngModel)]="name"> </p>
+		<p >Hello {{name}}</p> -->
+
+
+			
 	</div>
-
-<<<<<<< HEAD
-	<!-- <ul *ngIf="items$ | async as courses else noData">
-          <li *ngFor="let item of items">
-              {{item.name}}
-          </li> 
-      </ul>
-     <ng-template #noData>No Data Available</ng-template> -->
+		
 
 </div>
-=======
-</div>
->>>>>>> 6c303ff3b7baaaca26dcec717b84acfb2d410313

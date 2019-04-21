@@ -17,6 +17,8 @@
 
 .carousel-item{
 	height: 600px;
+    min-width: 100%;
+
 }
 
 .example_e {
@@ -53,4 +55,11 @@
     font-family: 'ZCOOL XiaoWei', serif;
     color: #ebcaa2;
     font-size:larger;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    min-width: 100%;
+    min-height: initial;
 }

@@ -1,24 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import * as _ from 'lodash';
-
-=======
 import { AuthService } from '../auth/auth.service';
->>>>>>> 6c303ff3b7baaaca26dcec717b84acfb2d410313
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 
-interface Item{
-	description: string;
-	name: string;
-	quantity: string ;
-	price: string;
-	url:string;
-}
 
 @Component({
   selector: 'app-fridge-view',
@@ -26,15 +11,7 @@ interface Item{
   styleUrls: ['./fridge.component.scss']
 })
 export class FridgeComponent implements OnInit {
-<<<<<<< HEAD
-  
-  items$: Observable<Item[]>;
 
-  constructor(private http:HttpClient) {}
-  
-  ngOnInit() {
-
-=======
   private user: any = {};
   public fridge: any = [];
   public fridgeReady: boolean = false;
@@ -54,7 +31,6 @@ export class FridgeComponent implements OnInit {
       });
       this.fridgeReady = true;
     });
->>>>>>> 6c303ff3b7baaaca26dcec717b84acfb2d410313
   }
 
 }
