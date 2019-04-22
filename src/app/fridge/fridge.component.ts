@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {HttpParams} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
-
-
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 @Component({
   selector: 'app-fridge-view',
   templateUrl: './fridge.component.html',
@@ -33,10 +35,13 @@ export class FridgeComponent implements OnInit {
     });
   };
 
-  addToCart = function(item_id){
+  addToCart = function(){
 
-  	this.http.post("/api/cart/" + item_id);
-	alert("Item " + item_id + " was added to your cart");
+
+  	return this.http.post("/api/cart/" + this.user._id, {
+
+  	});
+  		  
   };
 
 }
