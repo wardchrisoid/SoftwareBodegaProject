@@ -11,6 +11,7 @@
 
     <span class="example-spacer"></span>
     <a class="links side" [routerLink]="['/auth/login']" *ngIf="!user">Login</a>
+    <a [routerLink]="['/cart']" class="cart"></a>
     <div>
       <a class="links side" *ngIf="user" [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>{{user.fullname}}

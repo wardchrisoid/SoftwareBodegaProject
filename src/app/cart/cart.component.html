@@ -1,0 +1,29 @@
+<div class="page_margin shadow text">	
+	<h1>Cart</h1>	
+
+	<div *ngIf="cartReady" ng-app="" class="container col-md-6">	
+		<table class="table table-sm table-hover ">
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Remove from Cart</th>
+					<th><th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr *ngFor = "let item of shoppingCart">
+					<td>{{item['name']}}</td>
+					<td>{{item["price"]}}</td>
+					<td>{{item["quantity"]}}</td>
+					<td><button type="button" class="btn btn-dark">Remove</button></td>
+					
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>	
+</div>	

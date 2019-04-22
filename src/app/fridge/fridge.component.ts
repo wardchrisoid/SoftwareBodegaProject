@@ -31,6 +31,14 @@ export class FridgeComponent implements OnInit {
       });
       this.fridgeReady = true;
     });
-  }
+  };
+
+  addToCart = function(item_id){
+
+  	this.http.post("/api/cart/" + item_id);
+	alert("Item " + item_id + " was added to your cart");
+  };
 
 }
+
+

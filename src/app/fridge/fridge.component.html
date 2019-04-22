@@ -12,6 +12,7 @@
 					<th>Item</th>
 					<th>Price</th>
 					<th>Quantity</th>
+					<!-- <th>Item ID</th> -->
 					<th>Add to Cart</th>
 					<th><th>
 				</tr>
@@ -19,10 +20,11 @@
 			<tbody>
 				
 				<tr *ngFor = "let item of fridge">
-					<td>{{item["name"]}}</td>
+					<td>{{item['name']}}</td>
 					<td>{{item["price"]}}</td>
 					<td>{{item["quantity"]}}</td>
-					<td><button type="button" class="btn btn-dark">Add</button></td>
+					<!-- <td>{{item["_id"]}}</td> -->
+					<td><button (click)="addToCart(item._id)" type="button" class="btn btn-dark">Add</button></td>
 					
 				</tr>
 			</tbody>
