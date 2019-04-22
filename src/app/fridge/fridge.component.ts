@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {HttpParams} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
+import {HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
@@ -35,13 +35,23 @@ export class FridgeComponent implements OnInit {
     });
   };
 
-  addToCart = function(){
 
+  addToCart = function(item_id,vendor_id){
+  	const body = new HttpParams()
+    .set('vendorId', vendor_id)
+    .set('itemId', item_id)
+    .set('quantity', "1");
 
-  	return this.http.post("/api/cart/" + this.user._id, {
-
-  	});
-  		  
+  this.http.post('/api/cart/'+ this.user._id,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+      }
+    ).subscribe(data => {
+      console.log(data)
+      alert("Item " + item_id + " was added to your cart");
+    });
   };
 
 }
