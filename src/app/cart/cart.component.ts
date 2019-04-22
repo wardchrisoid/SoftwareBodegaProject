@@ -18,19 +18,20 @@ export class CartComponent implements OnInit {
   constructor(private http : HttpClient, private authService: AuthService) {}
   ngOnInit() {
   	this.authService.me().subscribe( data => {this.user = data["user"];
-    });
-    console.log("User is: " + this.user);
-  	this.http.get("/api/cart/" + this.user._id).subscribe(data => {
-  	 	let items = [].slice.call(data)
-  	 	items.forEach(element => {
-  	 		let cart = []
-  	 		element["cart"].forEach(item => {
-  	 		  item["vendorId"] = element["_id"]
-  	 	      cart = cart.concat(item)
-  	 		})
-  	 		this.shoppingCart = this.shoppingCart.concat(cart)
-  	 	});
-  	 	this.cartReady = true;
+      console.log("User id is: " + this.user._id);
+      this.http.get("/api/cart/" + this.user._id).subscribe(data => {
+        let items = [].slice.call(data)
+        items.forEach(element => {
+          let cart = []
+          element["cart"].forEach(item => {
+            item["vendorId"] = element["_id"]
+              cart = cart.concat(item)
+          })
+          this.shoppingCart = this.shoppingCart.concat(cart)
+        });
+        this.cartReady = true;
+        console.log(this.shoppingCart)
+      });
     });
   }
 }
