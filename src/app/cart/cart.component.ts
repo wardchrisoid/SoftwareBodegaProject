@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
+import {HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
@@ -34,4 +36,20 @@ export class CartComponent implements OnInit {
       });
     });
   }
+
+  removeFromCart = function(item_id){
+  	const body = new HttpParams()
+    .set('itemId', item_id);
+
+  this.http.delete('/api/cart/'+ this.user._id,
+      body.toString(),	
+      {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+      }
+    ).subscribe(data => {
+      console.log(data)
+      alert("Item " + item_id + " was removed from your cart");
+    });
+  };
 }

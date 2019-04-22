@@ -101,7 +101,7 @@ async function removeFromCart(id, body){
   let tempItem = await User.find({'cart._id': itemId, _id: id}, {cart: {$elemMatch: {_id: itemId}}}).exec();
   let currentItem = await retrieveItem(itemId)
   if(tempItem[0] != undefined){
-    tempItem = tempItem[0]["cart"][0];
+    tempItem = tempItem[0]["cart"][0];  
     vendorId = tempItem["vendorId"];
     let item = {}
     item["quantity"] = tempItem["quantity"];
