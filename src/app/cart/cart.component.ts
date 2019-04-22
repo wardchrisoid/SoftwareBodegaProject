@@ -38,18 +38,9 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart = function(item_id){
-  	const body = new HttpParams()
-    .set('itemId', item_id);
-
-  this.http.delete('/api/cart/'+ this.user._id,
-      body.toString(),	
-      {
-        headers: new HttpHeaders()
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-      }
-    ).subscribe(data => {
+    this.http.delete('/api/cart/'+ this.user._id + '/' + item_id).subscribe(data => {
       console.log(data)
       alert("Item " + item_id + " was removed from your cart");
     });
-  };
+  }
 }

@@ -96,9 +96,8 @@ async function addToCart(id, body){
   }
 }
 
-async function removeFromCart(id, body){
-  let itemId = body["itemId"];
-  let tempItem = await User.find({'cart._id': itemId, _id: id}, {cart: {$elemMatch: {_id: itemId}}}).exec();
+async function removeFromCart(id, itemId){
+  let tempItem = await User.find({'cart._id': mongoose.Types.ObjectId(itemId), _id: mongoose.Types.ObjectId(id)}, {cart: {$elemMatch: {_id: mongoose.Types.ObjectId(itemId)}}}).exec();
   let currentItem = await retrieveItem(itemId)
   if(tempItem[0] != undefined){
     tempItem = tempItem[0]["cart"][0];  
