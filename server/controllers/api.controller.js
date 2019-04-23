@@ -63,7 +63,7 @@ async function updateItem(vendorId, itemId, item){
     result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: { "inventory.$.quantity": item.quantity}}).exec();
   if(item._id)
     result = User.findOneAndUpdate({_id: vendorId, 'inventory._id': itemId}, {$set: {"inventory.$._id": item._id}}).exec();
-  return result;
+  return result
 }
 
 async function deleteItem(vendorId, itemId){
