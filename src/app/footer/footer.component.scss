@@ -1,0 +1,49 @@
+
+.toolbar-buttons{
+  font-style: italic;
+  font-family: 'ZCOOL XiaoWei', serif;
+  text-indent: 15px;
+  color: #ebcaa2;
+}
+
+a:hover {
+  text-decoration:none;
+
+}
+.toolbar-buttons:hover{
+  
+  color: white;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.links {
+  color: white;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  font-weight: initial;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+  padding: 15px;
+  &.side {
+    padding: 0 14px;
+  }
+}
+.myfooter {
+  margin-left: 10%;
+  background: #6c400fd1;
+  width: 80%;
+  right: 10%;
+  min-width: 450px;
+  z-index: +1;
+}
+.mat-icon {
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+a {
+  cursor: pointer;
+}

@@ -54,15 +54,41 @@ export class VendorComponent implements OnInit {
           .set('Content-Type', 'application/x-www-form-urlencoded')
       }
     ).subscribe(data => {
+      this.http.get("/api/fridge" + this.user._id).subscribe(data => {
+        this.fridgeInventory = []
+        let items = [].slice.call(data)
+        items.forEach(element => {
+          let inventory = []
+          element["inventory"].forEach(item => {
+            item["vendorId"] = element["_id"]
+            inventory = inventory.concat(item)
+          })
+          this.fridgeInventory = this.fridgeInventory.concat(inventory)
+        });
+        this.inventoryReady = true;
+      });
       console.log(data)
-      alert("Added to fridge inventory " + JSON.stringify(this.model));
+    
     });
   };
 
   removeFromFridge = function(item_id){
     this.http.delete('/api/fridge/'+ this.user._id + '/' + item_id).subscribe(data => {
+      this.http.get("/api/fridge/" + this.user._id).subscribe(data => {
+        let items = [].slice.call(data)
+        items.forEach(element => {
+          let inventory = []
+          element["inventory"].forEach(item => {
+            item["vendorId"] = element["_id"]
+              inventory = inventory.concat(item)
+          })
+          this.fridgeInventory = inventory;
+        });
+        this.inventoryReady = true;
+      });
+
       console.log(data)
-      alert("Item " + item_id + " was removed from the fridge");
+      
     });
   }
 
