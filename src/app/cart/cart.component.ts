@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
     });
   }
 
+
   removeFromCart = function(item_id){
     this.http.delete('/api/cart/'+ this.user._id + '/' + item_id).subscribe(data => {
       console.log(data)

@@ -17,6 +17,7 @@ export class FridgeComponent implements OnInit {
   private user: any = {};
   public fridge: any = [];
   public fridgeReady: boolean = false;
+
   constructor(private http : HttpClient, private authService: AuthService) {}
   ngOnInit() {
     this.authService.me().subscribe( data => {this.user = data["user"];
@@ -34,7 +35,6 @@ export class FridgeComponent implements OnInit {
       this.fridgeReady = true;
     });
   };
-
 
   addToCart = function(item_id,vendor_id){
   	const body = new HttpParams()

@@ -1,0 +1,52 @@
+<div class="page_margin shadow text">	
+	<div *ngIf="inventoryReady" ng-app="" class="container col-md-6" >		
+		<h1>Fridge</h1>
+		<table class="table table-sm table-hover ">
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Remove Item from Fridge</th>
+					<th><th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr *ngFor = "let item of inventory">
+					<td>{{item["name"]}}</td>
+					<td>{{item["price"]}}</td>
+					<td>{{item["quantity"]}}</td>
+					<td><button (click)="removeFromFridge(item._id)" type="button" class="btn btn-dark">Remove</button></td>
+				</tr>
+			</tbody>
+		</table>
+
+        <div class=" container row offset-md-3 col-md-6">
+            <h3>Add Item to Fridge</h3>
+            <form name="form" (ngSubmit)="f.form.valid && addToFridge()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="item_name">Item Name</label>
+                    <input type="text" class="form-control" name="item_name" [(ngModel)]="model.item_name" #item_name="ngModel" required />
+                    
+                </div>
+                <div class="form-group">
+                    <label for="item_price">Price</label>
+                    <input type="text" class="form-control" name="item_price" [(ngModel)]="model.item_price" #item_price="ngModel" required />
+               
+                </div>
+                <div class="form-group">
+                    <label for="item_quantity">Quantity</label>
+                    <input type="text" class="form-control" name="item_quantity" [(ngModel)]="model.item_quantity" #item_quantity="ngModel" required />
+                  
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-dark">Add Item</button>
+                </div>
+            </form>
+        </div>
+
+
+	</div>	
+</div>

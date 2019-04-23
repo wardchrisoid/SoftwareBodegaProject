@@ -6,12 +6,13 @@
   <mat-toolbar color="primary">
     <a [routerLink]="['/']" class="logo"></a>
     <a [routerLink]="['/']" class="toolbar-buttons"> Home </a>
-    <a class="toolbar-buttons"> Deals </a>
+    <a [routerLink]="['/fridge']" class="toolbar-buttons"> Menu </a>
     <a [routerLink]="['/about']" class="toolbar-buttons"> About </a>
+    <a [routerLink]="['/vendor']" class="toolbar-buttons"> Vendor </a>
 
     <span class="example-spacer"></span>
     <a class="links side" [routerLink]="['/auth/login']" *ngIf="!user">Login</a>
-    <a [routerLink]="['/cart']" class="cart"></a>
+    
     <div>
       <a class="links side" *ngIf="user" [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>{{user.fullname}}
@@ -22,5 +23,6 @@
         <button mat-menu-item (click)="profile()">profile</button>
       </mat-menu>
     </div>
+    <a [routerLink]="['/cart']" class="cart"></a>
   </mat-toolbar>
 </header>

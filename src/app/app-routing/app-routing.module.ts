@@ -6,6 +6,7 @@ import { ProfileComponent } from '../profile/profile.component';
 import { AboutComponent } from '../about/about.component';
 import { FridgeComponent } from '../fridge/fridge.component';
 import { CartComponent } from '../cart/cart.component';
+import { VendorComponent } from '../vendor/vendor.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [{
 {
   path: 'profile',
   component: ProfileComponent
+},
+{
+  path: 'vendor',
+  component: VendorComponent
 },
 {
   path: 'about',
