@@ -40,8 +40,19 @@ export class CartComponent implements OnInit {
 
   removeFromCart = function(item_id){
     this.http.delete('/api/cart/'+ this.user._id + '/' + item_id).subscribe(data => {
+      this.http.get("/api/cart/" + this.user._id).subscribe(data => {
+        let items = [].slice.call(data)
+        items.forEach(element => {
+          let cart = []
+          element["cart"].forEach(item => {
+            item["vendorId"] = element["_id"]
+              cart = cart.concat(item)
+          })
+          this.shoppingCart = cart
+        });
+        this.cartReady = true;
+      });
       console.log(data)
-      alert("Item " + item_id + " was removed from your cart");
     });
   }
 }
