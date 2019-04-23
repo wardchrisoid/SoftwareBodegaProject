@@ -49,8 +49,20 @@ export class FridgeComponent implements OnInit {
           .set('Content-Type', 'application/x-www-form-urlencoded')
       }
     ).subscribe(data => {
+      this.http.get("/api/fridge").subscribe(data => {
+        this.fridge = []
+        let items = [].slice.call(data)
+        items.forEach(element => {
+          let inventory = []
+          element["inventory"].forEach(item => {
+            item["vendorId"] = element["_id"]
+            inventory = inventory.concat(item)
+          })
+          this.fridge = this.fridge.concat(inventory)
+        });
+        this.fridgeReady = true;
+      });
       console.log(data)
-      alert("Item " + item_id + " was added to your cart");
     });
   };
 
