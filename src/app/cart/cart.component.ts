@@ -14,6 +14,8 @@ import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/f
 export class CartComponent implements OnInit {
   
   private user: any = {};
+  private totalPrice: number;
+  ;
   public shoppingCart: any = [];
   public cartReady: boolean = false;
 
@@ -33,6 +35,7 @@ export class CartComponent implements OnInit {
         });
         this.cartReady = true;
         console.log(this.shoppingCart)
+        this.total();
       });
     });
   }
@@ -50,9 +53,21 @@ export class CartComponent implements OnInit {
           })
           this.shoppingCart = cart
         });
-        this.cartReady = true;
+        this.cartReady = true
+        if (this.cartReady = true){
+          this.total();
+        }
       });
       console.log(data)
     });
+  }
+
+  total = function(){
+    let price: number =0;
+    this.totalPrice = 0;
+    this.shoppingCart.forEach(element => {
+    price += element["price"]
+    });
+    this.totalPrice = price.toPrecision(4)
   }
 }
