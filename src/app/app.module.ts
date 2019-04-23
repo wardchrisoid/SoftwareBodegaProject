@@ -18,6 +18,9 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { FooterComponent } from './footer/footer.component';
+import { CartComponent } from './cart/cart.component';
+import { VendorComponent } from './vendor/vendor.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { FridgeComponent } from './fridge/fridge.component';
     ProfileComponent,
     AboutComponent,
     FridgeComponent,
+    FooterComponent,
+    CartComponent,
+    VendorComponent,
   ],
   imports: [
     BrowserModule,

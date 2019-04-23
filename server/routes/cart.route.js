@@ -11,7 +11,13 @@ module.exports = router;
 router.route('/:id')
   .get(retrieve)
   .post(addToCart)
+
+router.route('/:id/:itemId')
   .delete(removeFromCart)
+
+
+router.route('/checkout/:id')
+  .post(purchaseCart)
 
 async function retrieve(req, res) {
   let cart = await apiCtrl.cart(req.params.id);
@@ -23,6 +29,11 @@ async function addToCart(req, res){
   res.json(item);
 }
 async function removeFromCart(req, res){
-  let item = await apiCtrl.removeFromCart(req.params.id, req.body);
+  let item = await apiCtrl.removeFromCart(req.params.id, req.params.itemId);
   res.json(item);
+}
+
+async function purchaseCart(req, res){
+  let cart = await apiCtrl.purchaseCart(req.params.id);
+  res.json(cart);
 }

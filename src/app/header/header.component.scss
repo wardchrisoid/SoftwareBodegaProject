@@ -9,6 +9,13 @@ header {
       border-radius: 30px;
       margin-top: 7px;
     }
+    .cart{
+      background-image: url('../../assets/cart.png');
+      width: 50px;
+      height: 25px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
     .toolbar-buttons{
       font-style: italic;
       font-family: 'ZCOOL XiaoWei', serif;
@@ -16,6 +23,10 @@ header {
       color: #ebcaa2;
     }
 
+    a:hover {
+      text-decoration:none;
+  
+    }
     .toolbar-buttons:hover{
       
       color: white;

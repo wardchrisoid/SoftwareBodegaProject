@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 
 import { AuthService } from '../auth/auth.service';
@@ -11,7 +12,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  @Input() user: any = {};
+  private userSubscription: Subscription;
+  public user: any;
 
   constructor(
     private authService: AuthService,
@@ -19,17 +21,32 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (!this.user) {
-      this.router.navigate(['/auth/login']);
-    }
-    console.log("----- header.component.ts -----");
-    console.log("this.user:");
-    console.log(JSON.stringify(this.user));
-    console.log("authService.getUser()");
-    console.log(this.authService.getUser());
-    console.log("this.authService.me()");
-    console.log(this.authService.me());
-    console.log("-------------------------------");
+
+    // init this.user on startup
+    this.authService.me().subscribe(data => {
+      this.user = data.user;
+      console.log("----- profile.component.ts -> ngOnInit() -> this.authService.me().subscribe(...) -----");
+      console.log("\"this.user\":");
+      console.log(this.user);
+      console.log("--------------------------------------------------------------------------------------");
+    });
+
+    // update this.user after login/register/logout
+    this.userSubscription = this.authService.$userSource.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  ngOnChanges() {
+    //console.log("----- profile.component.ts -> ngOnChanges() -----");
+    //if (this.user) {
+      //console.log("this.user != undefined");
+      //console.log("this.user:");
+      //console.log(this.user);
+    //} else {
+      //console.log("this.user == false");
+    //}
+    //console.log("------------------------------------------------");
   }
 
   profileForm = new FormGroup({
