@@ -18,25 +18,25 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("----- header.component.ts -> ngOnInit() -----");
-    console.log("this.user != undefined");
-    console.log("this.user:");
-    console.log(this.user);
-    console.log("authService.getUser()");
-    console.log(this.authService.getUser());
-    console.log("this.authService.me()");
-    console.log(this.authService.me());
-    console.log("---------------------------------------------");
+    //console.log("----- header.component.ts -> ngOnInit() -----");
+    //console.log("this.user != undefined");
+    //console.log("this.user:");
+    //console.log(this.user);
+    //console.log("authService.getUser()");
+    //console.log(this.authService.getUser());
+    //console.log("this.authService.me()");
+    //console.log(this.authService.me());
+    //console.log("---------------------------------------------");
   }
 
   ngOnChanges() {
-    if (this.user) {
-      console.log("----- header.component.ts -> ngOnChanges() -----");
-      console.log("this.user != undefined");
-      console.log("this.user:");
-      console.log(this.user);
-      console.log("------------------------------------------------");
-    }
+    //if (this.user) {
+      //console.log("----- header.component.ts -> ngOnChanges() -----");
+      //console.log("this.user != undefined");
+      //console.log("this.user:");
+      //console.log(this.user);
+      //console.log("------------------------------------------------");
+    //}
   }
 
   profile(): void {
